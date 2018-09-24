@@ -41,4 +41,5 @@ Thumbs.db
 *.dotCover
 
 # Data
-MarsRoverImages/wwwroot/images/mars/*
+MarsRoverImages/wwwroot/images/mars/*.JPG
+MarsRoverImages/wwwroot/images/mars/*.png
