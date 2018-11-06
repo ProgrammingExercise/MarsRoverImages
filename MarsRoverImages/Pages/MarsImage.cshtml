@@ -1,0 +1,26 @@
+﻿@page
+@model MarsImageModel
+@{
+    ViewData["Title"] = "View Image";
+}
+<div class="row">
+    <div class="thumbnail">
+        <img src="@Model.LocalUrl" style="width:100%" id="mars_image">
+    </div>
+    <dl class="row">
+        <dt class="col-sm-3">Camera</dt>
+        <dd class="col-sm-9" id="camera">@Model.Camera</dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-3">Earth Date</dt>
+        <dd class="col-sm-9" id="earth_date">@Model.EarthDate</dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-3">Photo ID</dt>
+        <dd class="col-sm-9" id="photo_id">@Model.PhotoId</dd>
+    </dl>
+    <dl class="row">
+        <dt class="col-sm-3">Rover</dt>
+        <dd class="col-sm-9" id="rover">@Model.Rover</dd>
+    </dl>
+</div>

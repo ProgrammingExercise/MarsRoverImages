@@ -12,7 +12,7 @@ namespace MarsRoverImages.Pages
     {
         private readonly IFileProvider _fileProvider;
 
-        public List<string> ImageUrls { get; set; }
+        public List<MarsPhoto> Photos { get; set; }
 
         public IndexModel(IFileProvider fileProvider) 
         {
@@ -24,7 +24,7 @@ namespace MarsRoverImages.Pages
             IFileInfo fileInfo = _fileProvider.GetFileInfo("wwwroot/data/dates.txt");
             List<DateTime> dates = dateImporter.ImportDatesFromFile(fileInfo.PhysicalPath);
             MarsImageCache cache = new MarsImageCache(_fileProvider, "wwwroot/images/mars/");
-            ImageUrls = await cache.GetImageURLsForDates(dates);
+            Photos = await cache.GetImagesForDates(dates);
 
         }
     }

@@ -4,12 +4,12 @@
     ViewData["Title"] = "Home page";
 }
     <div class="row">
-        @foreach (var image in Model.ImageUrls)
+        @foreach (var image in Model.Photos)
         {
         <div class="col-md-4">
             <div class="thumbnail">
-                <a href="@image">
-                    <img src="@image" style="width:100%">
+                <a href="MarsImage?localUrl=@image.LocalUrl&photoId=@image.PhotoId&camera=@image.Camera.FullName&earthDate=@image.EarthDateStr&rover=@image.Rover.Name">
+                    <img src="@image.LocalUrl" style="width:100%" class="mars_image">
                 </a>
             </div>
         </div>

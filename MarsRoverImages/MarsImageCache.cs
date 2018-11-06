@@ -20,26 +20,26 @@ namespace MarsRoverImages
             _photoFolder = photoFolder;
         }
 
-        public async Task<List<string>> GetImageURLsForDates(List<DateTime> dates)
+        public async Task<List<MarsPhoto>> GetImagesForDates(List<DateTime> dates)
         {
-            List<string> urls = new List<string>();
+            List<MarsPhoto> photos = new List<MarsPhoto>();
             foreach(var date in dates) 
             {
-                urls.AddRange(await GetImageURLsForDate(date));
+                photos.AddRange(await GetImagesForDate(date));
             }
 
-            return urls;
+            return photos;
         }
 
-        public async Task<List<string>> GetImageURLsForDate(DateTime date)
+        public async Task<List<MarsPhoto>> GetImagesForDate(DateTime date)
         {
-            List<string> urls = new List<string>();
+            List<MarsPhoto> photos = new List<MarsPhoto>();
             var serializer = new DataContractJsonSerializer(typeof(MarsData));
             using (var client = new HttpClient())
             {
                 try
                 {
-                    var data = client.GetStringAsync("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + date.ToString("yyyy-M-d") + "&api_key=DEMO_KEY");
+                    var data = client.GetStringAsync("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + date.ToString("yyyy-M-d") + "&api_key=2Wf0ZQ1rXMZ7QJ1iX39b343VjqZSytOD0x9V9fSu");
                     var marsData = serializer.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(await data))) as MarsData;
                     foreach(var photo in marsData.Photos)
                     {
@@ -53,7 +53,8 @@ namespace MarsRoverImages
                             var photoData = await client.GetByteArrayAsync(photo.ImageSource);
                             File.WriteAllBytes(localFolder + "/" + localFilename, photoData);
                         }
-                        urls.Add(localPath.Replace("wwwroot/", ""));
+                        photo.LocalUrl = localPath.Replace("wwwroot/", "");
+                        photos.Add(photo);
                     }
                 }
                 catch(Exception ex)
@@ -61,7 +62,7 @@ namespace MarsRoverImages
                     Console.WriteLine(ex.Message);
                 }
             }
-            return urls;
+            return photos;
         }
     }
 }

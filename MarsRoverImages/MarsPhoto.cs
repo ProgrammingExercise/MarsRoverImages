@@ -24,6 +24,8 @@ namespace MarsRoverImages
         [DataMember(Name = "rover")]
         public MarsRover Rover { get; set; }
 
+        public String LocalUrl { get; set; }
+
         public MarsPhoto()
         {
         }

@@ -22,5 +22,6 @@
     <Content Remove="Pages\About.cshtml" />
     <Content Remove="Pages\Contact.cshtml" />
     <Content Remove="Pages\Privacy.cshtml" />
+    <Content Remove="Pages\Shared\_CookieConsentPartial.cshtml" />
   </ItemGroup>
 </Project>
