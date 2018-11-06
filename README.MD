@@ -6,6 +6,7 @@ This is an ASP.NET Core application that pulls images from the NASA mars rover A
 
 - Visual Studio 2017
 - Docker
+- IntelliJ
 
 ## Building and Running the application
 
@@ -14,3 +15,12 @@ To run the project open the solution in Visual Studio 2017, make sure that the *
 ## Changing the dates used to pull images
 
 To change the dates, edit the dates.txt file in the wwwroot/data folder. Each date should be on a seperate line.
+
+## Running Tests
+
+To run the tests
+
+- Start the web application 
+- Open the Selenium Test project in IntelliJ
+- Make sure the port number in the project is correct
+- Right click on the test you want to run and click run.
